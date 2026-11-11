@@ -1,0 +1,73 @@
+class ContadorScreen extends StatefulWidget {
+  const ContadorScreen({super.key}); 
+  // createState() crea el objeto que guarda el estado
+  @override
+  State<ContadorScreen> createState() => _ContadorScreenState();
+}
+// Clase 2: el estado (acá viven las variables y el build)
+// El _ al principio la hace privada — solo accesible en este archivo
+class _ContadorScreenState extends State<ContadorScreen> {
+  int _contador = 0;
+  // ── initState() — se ejecuta UNA SOLA VEZ al crear el widget ─
+  // Usalo para inicializar datos, llamar APIs, configurar timers, etc.
+  @override
+  void initState() {
+    super.initState();  // SIEMPRE primero
+    print('Widget creado');
+  }
+  // ── dispose() — se ejecuta al destruir el widget ─────────────
+  // Usalo para liberar recursos: controladores, timers, suscripciones.
+  @override
+  void dispose() {
+    print('Widget destruido');
+    super.dispose();  // SIEMPRE al final
+  }
+  // ── Métodos que modifican el estado ──────────────────────────
+  void _sumar() {
+    setState(() {
+      // setState hace DOS cosas:
+      // 1. Ejecuta este bloque (modifica las variables)
+      // 2. Le dice a Flutter que redibuje este widget
+      _contador++;
+    });
+  }
+ 
+  void _restar() => setState(() => _contador--);
+  void _resetear() => setState(() => _contador = 0);
+ 
+  // ── build() — se llama cada vez que el estado cambia ─────────
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Contador')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('_contador = $_contador',
+              style: TextStyle(fontSize: 14, color: Colors.grey)),
+            Text('$_contador',
+              style: TextStyle(fontSize: 80, fontWeight: FontWeight.bold)),
+            SizedBox(height: 32),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              ElevatedButton(
+                onPressed: _restar,
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: Icon(Icons.remove, size: 28),
+              ),
+              SizedBox(width: 20),
+              ElevatedButton(
+                onPressed: _sumar,
+                child: Icon(Icons.add, size: 28),
+              ),
+            ]),
+            TextButton(
+              onPressed: _resetear,
+              child: Text('Resetear'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

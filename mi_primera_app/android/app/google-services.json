@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "271311586430",
+    "project_id": "desafio7-780b8",
+    "storage_bucket": "desafio7-780b8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271311586430:android:f413ddde6e0eaa463ac42f",
+        "android_client_info": {
+          "package_name": "com.example.mi_primera_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0kzlxR0tvlTGHwd62BkrakQhkeh9u5dQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
